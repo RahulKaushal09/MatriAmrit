@@ -177,7 +177,9 @@ p { text-wrap: pretty; }
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: .6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .35rem .6rem;
   font-size: var(--t-xs);
   font-weight: 600;
   letter-spacing: .17em;
@@ -1610,6 +1612,9 @@ p { text-wrap: pretty; }
 
 @media (max-width: 620px) {
   :root { --nav-h: 66px; }
+  /* The lock-up is too tall for a 66px bar once the tagline wraps. */
+  .nav .brand__tag { display: none; }
+  .eyebrow::before, .eyebrow--center::after { display: none; }
   .form-grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
   .rail-head { align-items: flex-start; }
