@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" --max-time 12 \"https://images.unsplash.com/photo-1544126592-807ade215a0b?w=200\")",
+      "WebSearch",
+      "Bash(curl -s --max-time 20 -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\)\" \"https://unsplash.com/napi/search/photos?query=indian%20mother%20baby&per_page=8\")"
+    ]
+  }
+}
