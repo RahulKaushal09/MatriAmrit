@@ -235,6 +235,17 @@
     });
   });
 
+  /* ── 9b. Leadership bios: expand the rest of the note ───────────── */
+  $$('.leader').forEach(card => {
+    const btn   = $('.leader__toggle', card);
+    const label = $('span', btn ?? card);
+    btn?.addEventListener('click', () => {
+      const open = card.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      if (label) label.textContent = open ? label.dataset.less : label.dataset.more;
+    });
+  });
+
   /* ── 10. Forms (demo handlers — wire to a real endpoint later) ──── */
   const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
 
