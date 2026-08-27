@@ -672,250 +672,301 @@ p {
 }
 
 /* ---------- 8. Hero --------------------------------------------------- */
+/* The hero art is a photograph with deliberate empty ground — cream on the
+   left (desktop) or across the top (mobile) — so the copy sits on the
+   background itself rather than on a scrim. */
 .hero {
   position: relative;
-  padding-block: clamp(3rem, 6vw, 5.5rem) clamp(3.5rem, 7vw, 6.5rem);
+  background-color: #F7EFE0;
+  /* The photograph is anchored to the bottom at its natural ratio (864:1821,
+     so 210.8vw tall). The gradient layer is sized to exactly that box, which
+     puts its fade on the image's own top edge and hides the seam. */
+  background-image:
+    linear-gradient(to bottom, #F7EFE0 0%, rgba(247, 239, 224, 0) 15%),
+    url("../assets/img/bg_mobile.png");
+  background-repeat: no-repeat;
+  background-position: bottom center, bottom center;
+  background-size: 100% 210.8vw, 100% auto;
+  padding-block: clamp(1.6rem, 4vw, 3rem) clamp(15rem, 40vw, 30rem);
   overflow: hidden;
 }
 
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(60% 50% at 78% 22%, rgba(243, 192, 121, .40), transparent 68%),
-    radial-gradient(45% 45% at 10% 78%, rgba(134, 160, 124, .22), transparent 70%),
-    radial-gradient(80% 60% at 50% 0%, rgba(245, 236, 221, .9), transparent 70%);
-}
-
-.hero__grid {
+.hero__inner {
   display: grid;
-  grid-template-columns: 1.03fr .97fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
 }
 
 .hero__copy {
   display: grid;
-  gap: 1.35rem;
-  justify-items: start;
+  gap: 1.25rem;
+  justify-items: center;
+  text-align: center;
 }
 
 .hero h1 {
   font-size: var(--t-4xl);
-  line-height: 1.02;
+  line-height: 1.06;
 }
 
 .hero h1 .ital {
   display: block;
 }
 
+.hero__rule {
+  width: 190px;
+  height: auto;
+  opacity: .9;
+}
+
 .hero .lede {
   font-size: var(--t-base);
-  max-width: 52ch;
+  max-width: 46ch;
 }
 
-.hero__deva {
-  font-family: var(--f-deva);
-  font-size: clamp(.86rem, .8rem + .3vw, 1.05rem);
-  color: var(--kumkum);
-  padding-left: 1rem;
-  border-left: 2px solid var(--saffron);
+/* Three promises, icon over label */
+.usp {
+  list-style: none;
+  padding: 0;
+  margin: .4rem 0 .2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.hero__deva em {
-  display: block;
-  font-family: var(--f-body);
-  font-style: normal;
-  font-size: .78rem;
-  color: var(--muted);
-  letter-spacing: .04em;
-  margin-top: .3rem;
+.usp li {
+  flex: 1 1 0;
+  min-width: 128px;
+  display: grid;
+  justify-items: center;
+  gap: .55rem;
+  padding: 0 clamp(.5rem, 1.6vw, 1.1rem);
+  font-size: var(--t-xs);
+  line-height: 1.45;
+  color: var(--ink-2);
+  text-align: center;
+}
+
+.usp li+li {
+  border-left: 1px solid rgba(198, 163, 83, .45);
+}
+
+.usp__ico {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(198, 163, 83, .55);
+  color: var(--saffron);
+}
+
+.usp__ico svg {
+  width: 22px;
+  height: 22px;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: .8rem;
-  align-items: center;
+  justify-content: center;
+  margin-top: .5rem;
 }
 
-.hero__stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1.2rem, 3vw, 2.6rem);
-  padding-top: 1.6rem;
-  margin-top: .4rem;
-  border-top: 1px solid var(--line);
-  width: 100%;
+.btn--gold {
+  --btn-bg: transparent;
+  --btn-fg: var(--saffron);
+  border-color: rgba(220, 140, 51, .75);
+  background: rgba(255, 255, 255, .55);
 }
 
-.stat__num {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2.15rem);
-  color: var(--kumkum);
-  line-height: 1;
-  display: flex;
-  align-items: baseline;
-  gap: 1px;
+.btn--gold::after {
+  background: var(--grad-sun);
 }
 
-.stat__label {
-  font-size: var(--t-xs);
-  color: var(--muted);
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  margin-top: .45rem;
+.btn--gold:hover {
+  --btn-fg: #fff;
+  border-color: transparent;
 }
 
-/* Hero artwork */
-.hero__art {
+/* ---- Floating product callouts ---- */
+.hero__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .7rem;
+  align-items: stretch;
+}
+
+.pcard {
   position: relative;
   display: grid;
-  place-items: center;
+  align-content: start;
+  gap: .5rem;
+  width: 100%;
+  padding: .95rem 1rem 1.05rem;
+  border-radius: var(--r-md);
+  background: rgba(253, 249, 242, .90);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .75);
+  box-shadow: var(--sh-md);
+  color: var(--ink);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 
-.hero__art svg {
-  width: 100%;
-  max-width: 520px;
-  overflow: visible;
-}
-
-/* Founder portrait, set in a torana arch. */
-.hero__portrait {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  border-radius: 220px 220px var(--r-md) var(--r-md);
-  overflow: hidden;
-  background: var(--sand);
+.pcard:hover {
+  transform: translateY(-4px);
   box-shadow: var(--sh-lg);
 }
 
-.hero__portrait img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 50% 30%;
-}
-
-/* Gold hairline, inset — the same arch the old illustration drew. */
-.hero__portrait::after {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(252, 248, 242, .5);
-  border-radius: 210px 210px var(--r-sm) var(--r-sm);
-  pointer-events: none;
-}
-
-.hero__portrait figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 4.5rem 1.5rem 1.3rem;
-  background: linear-gradient(to top, rgba(36, 24, 18, .85), rgba(36, 24, 18, .45) 45%, transparent);
-  color: var(--ivory);
-}
-
-.hero__portrait figcaption strong {
-  display: block;
-  font-family: var(--f-display);
-  font-size: var(--t-lg);
-  font-weight: 600;
-  color: var(--gold-lt);
-}
-
-.hero__portrait figcaption span {
-  display: block;
-  margin-top: .2rem;
-  font-size: var(--t-xs);
-  letter-spacing: .04em;
-  color: rgba(252, 248, 242, .85);
-}
-
-.spin-slow {
-  transform-origin: 50% 50%;
-  animation: spin 90s linear infinite;
-}
-
-.spin-rev {
-  transform-origin: 50% 50%;
-  animation: spin 130s linear infinite reverse;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.chip-float {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .5rem .9rem .5rem .55rem;
-  background: rgba(255, 255, 255, .82);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, .9);
-  border-radius: var(--r-full);
-  box-shadow: var(--sh-md);
-  font-size: var(--t-xs);
-  font-weight: 600;
-  color: var(--ink);
-  white-space: nowrap;
-  animation: bob 7s ease-in-out infinite;
-}
-
-.chip-float i {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+.pcard__ico {
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
-  font-style: normal;
-  font-size: .8rem;
-  background: var(--parchment);
+  border-radius: 50%;
+  background: rgba(220, 140, 51, .10);
+  color: var(--saffron);
+  margin-bottom: .2rem;
 }
 
-.chip-float small {
-  display: block;
-  font-weight: 400;
-  color: var(--muted);
-  font-size: .64rem;
-  letter-spacing: .05em;
+.pcard__ico svg {
+  width: 20px;
+  height: 20px;
 }
 
-.chip-float--1 {
-  top: 12%;
-  left: -7%;
-  animation-delay: -1s;
+.pcard__eyebrow {
+  font-size: .7rem;
+  line-height: 1.4;
+  color: var(--ink-3);
 }
 
-.chip-float--2 {
-  top: 58%;
-  right: -7%;
-  animation-delay: -3.5s;
+.pcard__name {
+  font-family: var(--f-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  color: var(--ink);
 }
 
-.chip-float--3 {
-  bottom: 8%;
-  left: 2%;
-  animation-delay: -5s;
+.pcard__rule {
+  width: 34px;
+  height: 1.5px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: .15rem 0;
 }
 
-@keyframes bob {
+.pcard__tag {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  line-height: 1.4;
+}
 
-  0%,
-  100% {
-    transform: translateY(0);
+/* Decorative only, and it vanishes against the dark laddus behind it. */
+.pcard__arrow {
+  display: none;
+}
+
+/* ---- Trust bar ---- */
+.hero__trust {
+  list-style: none;
+  padding: clamp(1rem, 2.2vw, 1.4rem) clamp(1rem, 2.5vw, 2rem);
+  margin: clamp(1.6rem, 4vw, 2.6rem) 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .9rem 1rem;
+  border-radius: var(--r-md);
+  background: rgba(253, 249, 242, .88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .8);
+  box-shadow: var(--sh-sm);
+}
+
+.hero__trust li {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  font-size: var(--t-xs);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.hero__trust li svg,
+.usp__ico svg,
+.pcard__ico svg {
+  flex: none;
+}
+
+.hero__trust svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  color: var(--saffron);
+}
+
+/* ---- Desktop: copy left, bowls right, callouts over the photograph ---- */
+@media (min-width: 900px) {
+  .hero {
+    background-image: url("../assets/img/bg_web.png");
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem);
   }
 
-  50% {
-    transform: translateY(-11px);
+  .hero__inner {
+    grid-template-columns: 1.02fr .98fr;
+    min-height: min(56vh, 465px);
+  }
+
+  .hero__copy {
+    justify-items: start;
+    text-align: left;
+    gap: 1.4rem;
+  }
+
+  .hero .lede {
+    max-width: 40ch;
+  }
+
+  .usp {
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .hero__actions {
+    justify-content: flex-start;
+  }
+
+  .hero__cards {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 7vw, 5.5rem);
+    justify-items: start;
+  }
+
+  .pcard {
+    width: min(215px, 25vw);
+    padding: 1.1rem 1.15rem 1.2rem;
+  }
+
+  .hero__trust {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem clamp(1rem, 2.5vw, 2rem);
+  }
+
+  .hero__trust li+li {
+    border-left: 1px solid rgba(198, 163, 83, .3);
+    padding-left: clamp(1rem, 2.5vw, 2rem);
+  }
+
+  .pcard--low {
+    margin-left: clamp(0px, 1.5vw, 22px);
   }
 }
 
@@ -1112,84 +1163,19 @@ p {
   background: var(--ivory);
 }
 
-/* ── Founder feature ─────────────────────────────────────────────── */
-.founder {
-  display: grid;
-  grid-template-columns: .78fr 1.22fr;
-  gap: clamp(2rem, 5vw, 4.2rem);
-  align-items: center;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  padding: clamp(1.6rem, 3vw, 2.6rem);
-  background: var(--parchment);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--r-lg);
-  box-shadow: var(--sh-md);
-}
-
-.founder__frame {
-  position: relative;
-  border-radius: var(--r-md);
-  overflow: hidden;
-  box-shadow: var(--sh-sm);
-  background: var(--sand);
-}
-
-.founder__frame img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 28% 30%;
-  transition: transform .8s var(--ease);
-}
-
-.founder:hover .founder__frame img {
-  transform: scale(1.035);
-}
-
-/* Gold hairline inset — the same frame language as the product cards. */
-.founder__frame::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  border: 1px solid rgba(252, 248, 242, .45);
-  border-radius: calc(var(--r-md) - 6px);
-  pointer-events: none;
-}
-
-.founder__body {
-  display: grid;
-  gap: 1.15rem;
-}
-
-.founder__body p {
-  color: var(--ink-3);
-  line-height: 1.7;
-}
-
-.founder__coda {
-  margin-top: .3rem;
-  padding: 1.25rem 1.5rem;
-  border-left: 3px solid var(--saffron);
-  background: rgba(255, 255, 255, .65);
-  border-radius: 0 var(--r-md) var(--r-md) 0;
-  font-family: var(--f-display);
-  font-size: var(--t-lg) !important;
-  font-style: italic;
-  line-height: 1.45;
-  color: var(--ink) !important;
-}
-
 /* ── Leadership cards ────────────────────────────────────────────── */
+/* Five cards on one horizontal track — .rail supplies the scroll mechanics. */
 .leaders {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: clamp(1.1rem, 2.2vw, 1.7rem);
-  margin-top: clamp(1.4rem, 3vw, 2.2rem);
-  align-items: start;
+  align-items: stretch;
+  gap: clamp(.9rem, 2vw, 1.4rem);
+  /* room for the card's lift-on-hover and its shadow */
+  padding: .5rem .3rem 1.6rem;
+  margin-inline: -.3rem;
 }
 
 .leader {
+  flex: 0 0 clamp(268px, 76vw, 330px);
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1.5rem 1.1rem;
@@ -1248,6 +1234,20 @@ p {
   transform: scale(1.5);
 }
 
+.leader__photo--founder img {
+  object-position: 27% 26%;
+  transform: scale(1.55);
+}
+
+.leader--founder {
+  background: var(--parchment);
+  border-color: rgba(198, 163, 83, .4);
+}
+
+.leader--founder .leader__photo {
+  box-shadow: 0 0 0 3px var(--parchment), 0 0 0 4px var(--gold);
+}
+
 .leader__id {
   margin: 1rem 0 .9rem;
 }
@@ -1297,6 +1297,7 @@ p {
 /* Collapsible remainder — same grid-rows technique as the FAQ. */
 .leader__more {
   display: grid;
+  margin-bottom: 1rem;
   grid-template-rows: 0fr;
   transition: grid-template-rows .5s var(--ease);
 }
@@ -1332,7 +1333,7 @@ p {
   background: none;
   border: 0;
   border-top: 1px solid var(--line-soft);
-  margin-top: 1rem;
+  margin-top: auto;
   font: inherit;
   font-size: var(--t-xs);
   font-weight: 600;
@@ -1382,6 +1383,36 @@ p {
 
 .leader.is-open .leader__toggle i::after {
   transform: scaleY(0);
+}
+
+/* The rail furniture is styled for the dark Samskara band by default. */
+.rail-head--light {
+  align-items: center;
+  margin: clamp(1.6rem, 3.5vw, 2.4rem) 0 .4rem;
+}
+
+.rail-hint {
+  flex: 1 1 12rem;
+  min-width: 0;
+  font-size: var(--t-sm);
+  color: var(--muted);
+}
+
+.rail-head--light .rail-nav {
+  flex: none;
+}
+
+.rail-btn--light {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink-2);
+  box-shadow: var(--sh-xs);
+}
+
+.rail-btn--light:hover {
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: #fff;
 }
 
 .team__coda {
@@ -2942,34 +2973,8 @@ p {
 
 /* ---------- 25. Responsive -------------------------------------------- */
 @media (max-width: 1020px) {
-  .hero__grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .hero__art {
-    order: -1;
-    max-width: 440px;
-    margin-inline: auto;
-  }
-
-  .hero__copy {
-    justify-items: center;
-    text-align: center;
-  }
-
-  .hero__deva {
-    border-left: 0;
-    border-top: 2px solid var(--saffron);
-    padding: .8rem 0 0;
-  }
-
-  .hero__stats {
-    justify-content: center;
-  }
 
   .philosophy__grid,
-  .founder,
   .order__grid,
   .stage-panel,
   .contact-grid {
@@ -2979,11 +2984,6 @@ p {
   .stage-visual {
     order: -1;
     max-width: 480px;
-  }
-
-  .founder__frame {
-    max-width: 400px;
-    margin-inline: auto;
   }
 
   .footer__grid {
@@ -3017,20 +3017,6 @@ p {
     display: grid;
   }
 
-  .chip-float--1 {
-    top: 1%;
-    left: -3%;
-  }
-
-  .chip-float--2 {
-    top: auto;
-    bottom: 2%;
-    right: -3%;
-  }
-
-  .chip-float--3 {
-    display: none;
-  }
 }
 
 @media (max-width: 620px) {
@@ -3070,16 +3056,6 @@ p {
 
   .cta {
     border-radius: var(--r-lg);
-  }
-
-  .chip-float {
-    font-size: .68rem;
-    padding: .4rem .7rem .4rem .45rem;
-  }
-
-  .chip-float i {
-    width: 22px;
-    height: 22px;
   }
 }
 

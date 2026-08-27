@@ -103,11 +103,10 @@
 
     <!-- ══ Hero ══════════════════════════════════════════════════════ -->
     <section class="hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="wrap hero__grid">
+      <div class="wrap hero__inner">
 
         <div class="hero__copy">
-          <span class="eyebrow">Ayurveda × Sanatana Dharma × Modern Science</span>
+          <span class="eyebrow hero__eyebrow">Ayurveda × Sanatana Dharma × Modern Science</span>
 
           <h1 class="h-display">
             Nurturing mothers.<br>
@@ -115,101 +114,94 @@
             <span class="ital gold-text">Preserving tradition.</span>
           </h1>
 
+          <svg class="hero__rule" viewBox="0 0 220 14" aria-hidden="true">
+            <path d="M2 7h78M140 7h78" stroke="#C6A353" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M110 1.5 116 7l-6 5.5L104 7z" fill="#DC8C33"/>
+            <circle cx="93" cy="7" r="2.6" fill="#C6A353"/>
+            <circle cx="127" cy="7" r="2.6" fill="#C6A353"/>
+          </svg>
+
           <p class="lede">
-            Motherhood is sacred, and every child deserves the purest beginning in life.
-            MatriAmrit brings you wholesome postpartum nutrition, natural baby foods and
-            guidance through the <em>Samskaras</em> — so families can raise healthy, happy,
-            spiritually grounded children.
+            Ayurvedic nourishment for every stage of motherhood and childhood — rooted in
+            tradition, backed by expertise, made with love.
           </p>
 
-          <blockquote class="hero__deva">
-            मातृ देवो भव · पितृ देवो भव
-            <em>Revere the mother as divine, revere the father as divine — Taittiriya Upanishad</em>
-          </blockquote>
+          <ul class="usp">
+            <li>
+              <span class="usp__ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><path d="M12 11V6"/><path d="M12 6c0-2.2 1.8-4 4-4 0 2.2-1.8 4-4 4Z"/><path d="M6 21h12"/></svg>
+              </span>
+              <span>Ayurvedic &amp;<br>Traditional Wisdom</span>
+            </li>
+            <li>
+              <span class="usp__ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14c3.5-2 6.5-2 9 0 2.5 2 5.5 2 9 0"/><path d="M12 11c-2.6 0-4-1.6-4-3.4C8 5.6 9.6 4 11.4 4c.3 0 .5 0 .6.2.2-.2.4-.2.6-.2C14.4 4 16 5.6 16 7.6 16 9.4 14.6 11 12 11Z"/><path d="M3 19c3.5-2 6.5-2 9 0 2.5 2 5.5 2 9 0"/></svg>
+              </span>
+              <span>Made in Small<br>Batches with Care</span>
+            </li>
+            <li>
+              <span class="usp__ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m6 6 12 12"/><path d="M9 9h6v6H9z"/></svg>
+              </span>
+              <span>No Refined Sugar,<br>No Preservatives</span>
+            </li>
+          </ul>
 
           <div class="hero__actions">
-            <a class="btn btn--sun btn--lg" href="https://matri-amrit.vercel.app/qr-scanned.html" target="_blank"
-              rel="noopener">
+            <a class="btn btn--sun btn--lg" href="https://matri-amrit.vercel.app/qr-scanned.html" target="_blank" rel="noopener">
               Order now
-              <svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
+              <svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a class="btn btn--ghost btn--lg" href="#products">See the products</a>
-          </div>
-
-          <div class="hero__stats">
-            <div>
-              <div class="stat__num"><span data-count="16">0</span></div>
-              <div class="stat__label">Samskaras guided</div>
-            </div>
-            <div>
-              <div class="stat__num"><span data-count="100">0</span><span>%</span></div>
-              <div class="stat__label">Natural ingredients</div>
-            </div>
-            <div>
-              <div class="stat__num"><span data-count="0">0</span></div>
-              <div class="stat__label">Refined sugar</div>
-            </div>
+            <a class="btn btn--gold btn--lg" href="#products">Explore products</a>
           </div>
         </div>
 
-        <!-- Hero portrait: the founder herself — the shortest route to trust -->
-        <div class="hero__art">
-          <figure class="hero__portrait">
-            <img src="assets/img/team/Founder.jpeg" alt="The founder of MatriAmrit" width="960" height="1280"
-              fetchpriority="high" decoding="async">
-            <figcaption>
-              <strong>Our Founder</strong>
-              <span>A mother of six. A lifetime in the kitchen.</span>
-            </figcaption>
-          </figure>
+        <!-- Floating product callouts, laid over the bowls -->
+        <div class="hero__cards">
+          <a class="pcard" href="#products">
+            <span class="pcard__ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></svg>
+            </span>
+            <span class="pcard__eyebrow">Strength ·<br>For Everyday Use</span>
+            <h2 class="pcard__name">Sesame &amp;<br>Gond Laddu Mix</h2>
+            <span class="pcard__rule" aria-hidden="true"></span>
+            <span class="pcard__tag">For the<br>whole family</span>
+          </a>
 
-          <div class="chip-float chip-float--1">
-            <i aria-hidden="true">🌿</i>
-            <span>Strength Laddu<small>GOND &amp; SESAME</small></span>
-          </div>
-          <div class="chip-float chip-float--2">
-            <i aria-hidden="true">✨</i>
-            <span>Post Delivery Laddu<small>SUTIKA CARE</small></span>
-          </div>
+          <a class="pcard pcard--low" href="#products">
+            <span class="pcard__ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13c3-2 5.5-2 8 0 2.5 2 5 2 8 0"/><path d="M12 10c-2.3 0-3.6-1.4-3.6-3S9.8 4 11.2 4c.3 0 .6.1.8.3.2-.2.5-.3.8-.3 1.4 0 2.8 1.4 2.8 3s-1.3 3-3.6 3Z"/><path d="M6 20h12"/></svg>
+            </span>
+            <span class="pcard__eyebrow">For Mothers ·<br>Post-Delivery Nourishment</span>
+            <h2 class="pcard__name">Post Delivery<br>Laddus</h2>
+            <span class="pcard__rule" aria-hidden="true"></span>
+            <span class="pcard__tag">Sutika care</span>
+          </a>
         </div>
 
+      </div>
+
+      <div class="wrap">
+        <ul class="hero__trust">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M12 12V7"/><path d="M12 7c0-2.2 1.8-4 4-4 0 2.2-1.8 4-4 4Z"/><path d="M6 21h12"/></svg>
+            <span>Ayurvedic Nutrition</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M8 14h1M12 14h1M16 14h1M8 17h1M12 17h1"/></svg>
+            <span>Free Samskara Calendar</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.4"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M9 14v2a3 3 0 0 0 6 0v-2"/></svg>
+            <span>Guided by Ayurvedic Vaidyas &amp; Nutritionists</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4.5 8-10V5l-8-3-8 3v7c0 5.5 8 10 8 10Z"/><path d="M12 15c-2.5-1-3.5-3-3-5 2.5 0 4 1.4 4 3.4"/></svg>
+            <span>Pure Ingredients, Honest Promise</span>
+          </li>
+        </ul>
       </div>
     </section>
-
-    <!-- ══ Trust marquee ═════════════════════════════════════════════ -->
-    <div class="trust">
-      <div class="trust__track" data-marquee>
-        <span class="trust__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-          </svg> 100% Natural Ingredients</span>
-        <span class="trust__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
-          </svg> No Preservatives, Ever</span>
-        <span class="trust__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2v20M2 12h20" />
-          </svg> Vaidya-Formulated</span>
-        <span class="trust__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 6 9 17l-5-5" />
-          </svg> Lab-Tested Purity</span>
-        <span class="trust__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 7v5l3 2" />
-          </svg> Made Fresh Weekly</span>
-        <span class="trust__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5 5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z" />
-          </svg> Rooted in Sanatana Dharma</span>
-      </div>
-    </div>
 
     <!-- ══ Philosophy ════════════════════════════════════════════════ -->
     <section class="section philosophy" id="philosophy">
@@ -282,44 +274,65 @@
           </p>
         </div>
 
-        <!-- Founder — the origin story -->
-        <article class="founder" data-reveal>
-          <figure class="founder__frame">
-            <img src="assets/img/team/Founder.jpeg" alt="The founder of MatriAmrit, in her garden" width="960"
-              height="1280" loading="lazy" decoding="async">
-          </figure>
+        <div class="rail-head rail-head--light" data-reveal>
+          <p class="rail-hint">Five people, one kitchen — swipe or drag to meet them.</p>
+          <div class="rail-nav">
+            <button class="rail-btn rail-btn--light" data-rail-prev aria-label="Previous">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18 9 12l6-6"/></svg>
+            </button>
+            <button class="rail-btn rail-btn--light" data-rail-next aria-label="Next">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
 
-          <div class="founder__body">
-            <span class="eyebrow">Founder</span>
-            <h3 class="h2">Where MatriAmrit begins.</h3>
+        <div class="rail leaders" tabindex="0" aria-label="MatriAmrit team, scrollable">
 
-            <p>
+          <article class="leader leader--founder" data-reveal>
+            <figure class="leader__photo leader__photo--founder">
+              <img src="assets/img/team/Founder.jpeg" alt="The founder of MatriAmrit, in her garden" width="960"
+                height="1280" loading="lazy" decoding="async">
+            </figure>
+            <div class="leader__id">
+              <h3 class="leader__name">Our Founder</h3>
+              <span class="leader__role">Founder</span>
+              <p class="leader__meta">A mother of six · A lifetime in the kitchen</p>
+            </div>
+
+            <p class="leader__lead">
               At the heart of MatriAmrit is a mother whose greatest expression of love has always
               been through food, care, and seva. A mother of three daughters and three sons, she has
               spent a lifetime learning the art of cooking from her own mother and mother-in-law,
-              while continually exploring new ways to create wholesome, nourishing meals. Even today,
-              her kitchen is filled with a variety of preparations made with love, and her table
-              welcomes everyone—from little infants to elders—drawn not only by the healthy food she
-              prepares, but by her warm, motherly nature.
-            </p>
-            <p>
-              Her enthusiasm for learning, cooking, and serving has never faded. What began as a way
-              of caring for her own family gradually became something much larger: a desire to share
-              the same love, nourishment, and thoughtful preparation with others. At a stage of life
-              when many may choose to slow down, she chose to begin something new—to pass on what she
-              has learned and turn her lifelong love for food and family into a meaningful seva
-              through MatriAmrit.
+              while continually exploring new ways to create wholesome, nourishing meals.
             </p>
 
-            <p class="founder__coda">
-              For her, it is never too late to learn, never too late to serve, and never too late to
-              share love.
-            </p>
-          </div>
-        </article>
+            <div class="leader__more">
+              <div>
+                <p>
+                  Even today, her kitchen is filled with a variety of preparations made with love, and
+                  her table welcomes everyone—from little infants to elders—drawn not only by the
+                  healthy food she prepares, but by her warm, motherly nature.
+                </p>
+                <p>
+                  Her enthusiasm for learning, cooking, and serving has never faded. What began as a
+                  way of caring for her own family gradually became something much larger: a desire to
+                  share the same love, nourishment, and thoughtful preparation with others. At a stage
+                  of life when many may choose to slow down, she chose to begin something new—to pass
+                  on what she has learned and turn her lifelong love for food and family into a
+                  meaningful seva through MatriAmrit.
+                </p>
+                <blockquote class="leader__quote">
+                  For her, it is never too late to learn, never too late to serve, and never too late
+                  to share love.
+                </blockquote>
+              </div>
+            </div>
 
-        <!-- Leadership -->
-        <div class="leaders">
+            <button class="leader__toggle" type="button" aria-expanded="false">
+              <span data-more="Read the full note" data-less="Show less">Read the full note</span>
+              <i aria-hidden="true"></i>
+            </button>
+          </article>
 
           <article class="leader" data-reveal>
             <figure class="leader__photo leader__photo--ceo">
@@ -416,6 +429,46 @@
             </button>
           </article>
 
+          <article class="leader" data-reveal style="--d:330ms">
+            <figure class="leader__photo leader__photo--coo">
+              <img src="assets/img/team/COO.jpeg" alt="Chief Operating Officer, MatriAmrit" width="1280" height="762"
+                loading="lazy" decoding="async">
+            </figure>
+            <div class="leader__id">
+              <!-- TODO: replace with the COO's name -->
+              <h3 class="leader__name">Ritesh</h3>
+              <span class="leader__role">Chief Operating Officer</span>
+              <p class="leader__meta">Operations · Kitchen, sourcing &amp; fulfilment</p>
+            </div>
+
+            <p class="leader__lead">
+              Someone has to turn a mother's recipe into a repeatable process without losing what made
+              it hers. That is my job. I look after how MatriAmrit actually runs day to day — sourcing,
+              the kitchen calendar, batch sizes, packing, and getting a box to a doorstep while it is
+              still fresh.
+            </p>
+
+            <div class="leader__more">
+              <div>
+                <p>
+                  The constraint we have chosen makes this harder, not easier. No preservatives means a
+                  short shelf life, which means small batches, which means planning around real families'
+                  dates rather than a warehouse. I would rather run a tighter operation than add an
+                  ingredient nobody asked for.
+                </p>
+                <p>
+                  <strong>Every kilo that leaves us is traceable back to the batch it came from</strong>
+                  — and to the hands that rolled it.
+                </p>
+              </div>
+            </div>
+
+            <button class="leader__toggle" type="button" aria-expanded="false">
+              <span data-more="Read the full note" data-less="Show less">Read the full note</span>
+              <i aria-hidden="true"></i>
+            </button>
+          </article>
+
           <article class="leader" data-reveal style="--d:220ms">
             <figure class="leader__photo leader__photo--cto">
               <img src="assets/img/team/CTO.jpeg" alt="Rahul Kaushal, Chief Technology Officer" width="685"
@@ -456,47 +509,6 @@
                   As we grow, I want technology to carry the same care our founder puts into a single
                   laddu, to every family we reach — <strong>because scale should multiply care, not
                     replace it.</strong>
-                </p>
-              </div>
-            </div>
-
-            <button class="leader__toggle" type="button" aria-expanded="false">
-              <span data-more="Read the full note" data-less="Show less">Read the full note</span>
-              <i aria-hidden="true"></i>
-            </button>
-          </article>
-
-
-          <article class="leader" data-reveal style="--d:330ms">
-            <figure class="leader__photo leader__photo--coo">
-              <img src="assets/img/team/COO.jpeg" alt="Chief Operating Officer, MatriAmrit" width="1280" height="762"
-                loading="lazy" decoding="async">
-            </figure>
-            <div class="leader__id">
-              <!-- TODO: replace with the COO's name -->
-              <h3 class="leader__name">Ritesh</h3>
-              <span class="leader__role">Chief Operating Officer</span>
-              <p class="leader__meta">Operations · Kitchen, sourcing &amp; fulfilment</p>
-            </div>
-
-            <p class="leader__lead">
-              Someone has to turn a mother's recipe into a repeatable process without losing what made
-              it hers. That is my job. I look after how MatriAmrit actually runs day to day — sourcing,
-              the kitchen calendar, batch sizes, packing, and getting a box to a doorstep while it is
-              still fresh.
-            </p>
-
-            <div class="leader__more">
-              <div>
-                <p>
-                  The constraint we have chosen makes this harder, not easier. No preservatives means a
-                  short shelf life, which means small batches, which means planning around real families'
-                  dates rather than a warehouse. I would rather run a tighter operation than add an
-                  ingredient nobody asked for.
-                </p>
-                <p>
-                  <strong>Every kilo that leaves us is traceable back to the batch it came from</strong>
-                  — and to the hands that rolled it.
                 </p>
               </div>
             </div>

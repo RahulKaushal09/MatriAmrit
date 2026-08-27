@@ -182,10 +182,10 @@
   });
 
   /* ── 8. Samskara rail: buttons, drag-to-scroll ──────────────────── */
-  const rail = $('#rail');
-  if (rail) {
-    const prev = $('#railPrev');
-    const next = $('#railNext');
+  $$('.rail').forEach(rail => {
+    const scope = rail.closest('section') ?? document;
+    const prev = $('[data-rail-prev]', scope);
+    const next = $('[data-rail-next]', scope);
     const step = () => (rail.firstElementChild?.offsetWidth ?? 280) + 18;
 
     const syncArrows = () => {
@@ -224,7 +224,7 @@
     rail.addEventListener('pointerup', endDrag);
     rail.addEventListener('pointercancel', endDrag);
     rail.addEventListener('pointerleave', endDrag);
-  }
+  });
 
   /* ── 9. FAQ accordion ───────────────────────────────────────────── */
   $$('.faq-item').forEach(item => {
