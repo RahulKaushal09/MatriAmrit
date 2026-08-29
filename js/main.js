@@ -1,5 +1,5 @@
 /* =====================================================================
-   MatriAmrit — interaction layer
+   MatriAmrit - interaction layer
    Vanilla JS, no dependencies. Every module guards its own selectors so
    the same file can be dropped on every page.
    ===================================================================== */
@@ -246,7 +246,7 @@
     });
   });
 
-  /* ── 10. Forms (demo handlers — wire to a real endpoint later) ──── */
+  /* ── 10. Forms (demo handlers - wire to a real endpoint later) ──── */
   const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
 
   const subForm = $('#subForm');
@@ -257,7 +257,7 @@
     if (!note || !input) return;
 
     if (!validEmail(input.value)) {
-      note.textContent = 'That email does not look right — mind checking it?';
+      note.textContent = 'That email does not look right - mind checking it?';
       note.classList.remove('is-ok');
       input.focus();
       return;

@@ -1,6 +1,6 @@
 /* =====================================================================
-   MatriAmrit — Design System
-   "Sacred Modern" — Ayurveda × Sanatana Dharma × contemporary craft
+   MatriAmrit - Design System
+   "Sacred Modern" - Ayurveda × Sanatana Dharma × contemporary craft
    ===================================================================== */
 
 /* ---------- 1. Tokens ------------------------------------------------ */
@@ -48,7 +48,7 @@
   --r-xl: 44px;
   --r-full: 999px;
 
-  /* Shadows — warm-tinted, never grey */
+  /* Shadows - warm-tinted, never grey */
   --sh-xs: 0 1px 2px rgba(90, 45, 20, .06);
   --sh-sm: 0 2px 8px rgba(90, 45, 20, .07), 0 1px 2px rgba(90, 45, 20, .05);
   --sh-md: 0 10px 30px -8px rgba(90, 45, 20, .16), 0 2px 8px rgba(90, 45, 20, .06);
@@ -112,7 +112,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Parchment grain — a whisper, not a texture */
+/* Parchment grain - a whisper, not a texture */
 body::before {
   content: "";
   position: fixed;
@@ -672,8 +672,8 @@ p {
 }
 
 /* ---------- 8. Hero --------------------------------------------------- */
-/* The hero art is a photograph with deliberate empty ground — cream on the
-   left (desktop) or across the top (mobile) — so the copy sits on the
+/* The hero art is a photograph with deliberate empty ground - cream on the
+   left (desktop) or across the top (mobile) - so the copy sits on the
    background itself rather than on a scrim. */
 .hero {
   position: relative;
@@ -1164,7 +1164,7 @@ p {
 }
 
 /* ── Leadership cards ────────────────────────────────────────────── */
-/* Five cards on one horizontal track — .rail supplies the scroll mechanics. */
+/* Five cards on one horizontal track - .rail supplies the scroll mechanics. */
 .leaders {
   align-items: stretch;
   gap: clamp(.9rem, 2vw, 1.4rem);
@@ -1213,7 +1213,7 @@ p {
 }
 
 /* Framing is per-portrait. Two of the three are full-length photographs,
-   so they are zoomed and re-centred onto the face — object-position alone
+   so they are zoomed and re-centred onto the face - object-position alone
    cannot do it once the source is no wider than the square crop. */
 .leader__photo--ceo img {
   object-position: 50% 26%;
@@ -1294,7 +1294,7 @@ p {
   font-weight: 600;
 }
 
-/* Collapsible remainder — same grid-rows technique as the FAQ. */
+/* Collapsible remainder - same grid-rows technique as the FAQ. */
 .leader__more {
   display: grid;
   margin-bottom: 1rem;
@@ -1791,7 +1791,7 @@ p {
   aspect-ratio: 5 / 4;
 }
 
-/* Product photography — cut-out PNGs on the card's own gradient. */
+/* Product photography - cut-out PNGs on the card's own gradient. */
 /* The source files carry a solid white backdrop; multiply drops it into the
    card's gradient without needing the PNGs re-cut. */
 .prod__shot {
@@ -2574,7 +2574,7 @@ p {
   border-bottom: 1px solid rgba(245, 236, 221, .12);
 }
 
-/* The emblem is drawn for light ground — give it one in the footer. */
+/* The emblem is drawn for light ground - give it one in the footer. */
 .footer .brand__mark {
   height: 52px;
   padding: 4px 7px;
