@@ -165,8 +165,8 @@
         'Contains tree nuts (mixed dry fruits) and ragi. Made in a kitchen that also handles milk, wheat, sesame, poppy and groundnut.',
 
       variants: [
-        { id: 'matra-1kg', label: '1 kg', grams: 1000, price: 1650, note: 'About 24 laddus · roughly a month', popular: true },
-        { id: 'matra-2kg', label: '2 kg', grams: 2000, price: 3300, note: 'The full sutika period, with some spare' },
+        { id: 'matra-1kg', label: '1 kg', grams: 1000, price: 1650, note: '', popular: true },
+        { id: 'matra-2kg', label: '2 kg', grams: 2000, price: 3300, note: '' },
       ],
 
       faqs: [
