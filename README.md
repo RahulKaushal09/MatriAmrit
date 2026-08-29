@@ -92,7 +92,7 @@ Numbered and independently guarded, so deleting any section is safe:
 - [ ] **Wire the forms.** `#subForm` and `#contactForm` currently show a friendly
       message and reset. Point them at Formspree, Netlify Forms, or your backend.
 - [ ] **Replace placeholder contact details** in `contact.html` and every footer -
-      `care@matriamrit.in`, `+91 90000 00000`, and the Bengaluru address are stand-ins.
+      `matriamrit.gkg@gmail.com`, `+91 90000 00000`, and the Bengaluru address are stand-ins.
 - [ ] **Replace the `#` social links** in all four footers.
 - [ ] **Confirm the pricing.** ₹749 / ₹899 / ₹799 / ₹549 / ₹1,240 / ₹1,890 / ₹680 /
       ₹399 are plausible placeholders, not your numbers.
