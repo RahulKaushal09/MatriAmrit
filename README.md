@@ -11,6 +11,8 @@ and it works.
 | `products.html` | Full 9-item catalogue with stage filters, sourcing transparency, subscription comparison |
 | `samskaras.html` | All 16 Samskaras as a filterable vertical timeline - the strongest differentiating content on the site |
 | `contact.html` | Enquiry form with stage/topic routing, contact details, quick answers |
+| `privacy-policy.html` | Privacy Policy - DPDP Act 2023 / IT Rules 2011, Razorpay payment-data section, Grievance Officer |
+| `terms.html` | Terms & Conditions, with Shipping & Delivery (`#shipping`) and Cancellation & Refunds (`#refunds`) as separately linkable sections |
 | `css/style.css` | Entire design system, 26 numbered sections |
 | `js/main.js` | 12 self-guarding interaction modules - same file runs on every page |
 
@@ -94,8 +96,11 @@ Numbered and independently guarded, so deleting any section is safe:
 - [ ] **Replace the `#` social links** in all four footers.
 - [ ] **Confirm the pricing.** ₹749 / ₹899 / ₹799 / ₹549 / ₹1,240 / ₹1,890 / ₹680 /
       ₹399 are plausible placeholders, not your numbers.
-- [ ] **Legal pages** - Privacy, Terms, Shipping & Returns, Disclaimer are `#` links.
-      A food and infant-nutrition business needs the disclaimer in particular.
+- [ ] **Fill the legal placeholders.** `privacy-policy.html` and `terms.html` are live
+      and linked from every footer, but each carries `<!-- OPERATOR: ... -->` comments
+      marking what only you can supply: registered legal entity name, GSTIN, FSSAI
+      licence number, and the named Grievance Officer. Razorpay's review checks for a
+      real entity name and working contact details.
 - [ ] **Verify every health claim** with your vaidya and a paediatrician before
       launch. The copy is deliberately careful - the honey-and-infant-botulism note in
       `samskaras.html` (Jatakarma) is there on purpose and should stay.
