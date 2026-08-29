@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dispatch panel - MatriAmrit</title>
+  <meta name="theme-color" content="#241812">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/png" href="assets/img/logo/logoMatri.png">
+</head>
+
+<body class="admin-body">
+
+  <!-- ══ Top bar ═══════════════════════════════════════════════════ -->
+  <header class="ad-top">
+    <div class="ad-top__brand">
+      <img src="assets/img/logo/logoMatri.png" alt="" width="416" height="321">
+      <div>
+        <strong>MatriAmrit</strong>
+        <span>Dispatch panel</span>
+      </div>
+    </div>
+
+    <div class="ad-top__right">
+      <span class="ad-who" id="adWho">…</span>
+      <button class="ad-btn ad-btn--ghost" type="button" id="signOutBtn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="ad-main" id="main">
+
+    <!-- ══ At a glance ═════════════════════════════════════════════ -->
+    <section class="ad-stats" id="adStats" aria-label="Summary">
+      <div class="ad-stat is-loading"><dt>Paid today</dt><dd id="statToday">—</dd></div>
+      <div class="ad-stat is-loading"><dt>Awaiting dispatch</dt><dd id="statPending">—</dd></div>
+      <div class="ad-stat is-loading"><dt>Dispatched</dt><dd id="statDispatched">—</dd></div>
+      <div class="ad-stat is-loading"><dt>Revenue (paid)</dt><dd id="statRevenue">—</dd></div>
+    </section>
+
+    <!-- ══ Filters ═════════════════════════════════════════════════ -->
+    <section class="ad-toolbar" aria-label="Filter orders">
+      <div class="ad-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-3.5-3.5" />
+        </svg>
+        <input type="search" id="searchInput" placeholder="Order number, phone, name, PIN code…"
+          aria-label="Search orders" autocomplete="off">
+      </div>
+
+      <label class="ad-select">
+        <span>Payment</span>
+        <select id="statusFilter">
+          <option value="">All</option>
+          <option value="paid">Paid</option>
+          <option value="created">Awaiting payment</option>
+          <option value="failed">Failed</option>
+          <option value="cancelled">Cancelled</option>
+          <option value="refunded">Refunded</option>
+        </select>
+      </label>
+
+      <label class="ad-select">
+        <span>Dispatch</span>
+        <select id="fulfilmentFilter">
+          <option value="">All</option>
+          <option value="pending">Not packed</option>
+          <option value="packed">Packed</option>
+          <option value="dispatched">Dispatched</option>
+          <option value="delivered">Delivered</option>
+        </select>
+      </label>
+
+      <button class="ad-btn ad-btn--ghost" type="button" id="refreshBtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12a9 9 0 1 1-2.6-6.4" />
+          <path d="M21 3v6h-6" />
+        </svg>
+        Refresh
+      </button>
+    </section>
+
+    <p class="ad-count" id="adCount" role="status" aria-live="polite"></p>
+
+    <!-- ══ Orders ══════════════════════════════════════════════════ -->
+    <section class="ad-list" id="orderList" aria-label="Orders"></section>
+
+    <p class="ad-empty" id="adEmpty" hidden>No orders match these filters.</p>
+
+    <nav class="ad-pager" id="adPager" aria-label="Pages" hidden>
+      <button class="ad-btn ad-btn--ghost" type="button" id="prevPage">← Newer</button>
+      <span id="pageLabel"></span>
+      <button class="ad-btn ad-btn--ghost" type="button" id="nextPage">Older →</button>
+    </nav>
+  </main>
+
+  <!-- ══ Order detail ══════════════════════════════════════════════ -->
+  <div class="ad-drawer" id="drawer" hidden>
+    <div class="ad-drawer__scrim" data-close-drawer></div>
+
+    <aside class="ad-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <header class="ad-drawer__head">
+        <div>
+          <p class="ad-drawer__eyebrow" id="drawerEyebrow">Order</p>
+          <h2 id="drawerTitle">—</h2>
+        </div>
+        <button class="ad-icon-btn" type="button" data-close-drawer aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="ad-drawer__body" id="drawerBody"></div>
+
+      <footer class="ad-drawer__foot" id="drawerFoot"></footer>
+    </aside>
+  </div>
+
+  <!-- ══ WhatsApp composer ═════════════════════════════════════════ -->
+  <div class="ad-modal" id="waModal" hidden>
+    <div class="ad-modal__scrim" data-close-wa></div>
+
+    <div class="ad-modal__panel" role="dialog" aria-modal="true" aria-labelledby="waTitle">
+      <header class="ad-modal__head">
+        <h2 id="waTitle">Message the customer</h2>
+        <button class="ad-icon-btn" type="button" data-close-wa aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="ad-modal__body">
+        <p class="wa-to" id="waTo"></p>
+
+        <p class="wa-label">Start from a template</p>
+        <div class="wa-templates" id="waTemplates"></div>
+
+        <label class="wa-label" for="waText">Message</label>
+        <textarea id="waText" rows="9" spellcheck="true"></textarea>
+        <p class="wa-hint">
+          WhatsApp opens with this text ready to send — nothing is sent from here,
+          so you can still edit it there.
+        </p>
+      </div>
+
+      <footer class="ad-modal__foot">
+        <button class="ad-btn ad-btn--ghost" type="button" id="waCopy">Copy text</button>
+        <a class="ad-btn ad-btn--wa" id="waOpen" href="#" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.48A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.1 15.09l-.3-.17-3.1.88.83-3.04-.2-.31A8.1 8.1 0 0 1 12.04 3.8Zm4.66 10.2c-.25-.13-1.47-.72-1.7-.8-.22-.09-.39-.13-.55.12-.16.25-.63.8-.77.96-.14.16-.28.18-.53.06a6.6 6.6 0 0 1-3.3-2.88c-.25-.43.25-.4.71-1.32.08-.16.04-.3-.02-.42-.06-.13-.55-1.33-.76-1.82-.2-.47-.4-.4-.55-.41h-.47c-.16 0-.42.06-.64.3-.22.25-.84.83-.84 2s.86 2.31.98 2.47c.13.16 1.7 2.6 4.12 3.64 1.53.66 2.13.72 2.9.6.46-.06 1.47-.6 1.68-1.18.2-.58.2-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z" />
+          </svg>
+          Open WhatsApp
+        </a>
+      </footer>
+    </div>
+  </div>
+
+  <div class="ad-toast" id="adToast" role="status" aria-live="polite" hidden></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin-api.js"></script>
+  <script src="js/admin.js" defer></script>
+</body>
+
+</html>

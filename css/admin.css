@@ -1,0 +1,1068 @@
+/* =====================================================================
+   MatriAmrit - dispatch panel
+
+   Layered on top of style.css and built from the same tokens, so the
+   panel looks like it belongs to the shop rather than to a dashboard
+   template. Denser than the storefront on purpose: this is a working
+   screen, read dozens of times a day.
+
+   Everything here is prefixed `ad-`, `auth-`, `pill` or `wa-`. That is
+   not tidiness: style.css already owns `.drawer` for the mobile nav
+   menu, and an unprefixed `.drawer` here inherited its
+   `transform: translateY(-102%)` and opened the order detail entirely
+   above the viewport. Do not add a generic class name to this file.
+
+   `.btn`, `.field`, `.field__err` and `.form-status` ARE reused from
+   style.css deliberately, and are styled there, not here.
+   ===================================================================== */
+
+.admin-body {
+  background: var(--parchment);
+  min-height: 100vh;
+}
+
+/* The drawer and the composer scroll on their own; the page behind them
+   must not scroll with them. */
+body.is-locked {
+  overflow: hidden;
+}
+
+/* ---------- Sign in --------------------------------------------------- */
+
+.admin-body--auth {
+  display: grid;
+  place-items: center;
+  padding: clamp(1.2rem, 5vw, 3rem);
+  background: var(--grad-deep);
+}
+
+.auth {
+  width: 100%;
+  max-width: 410px;
+}
+
+.auth__card {
+  background: var(--surface);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-lg);
+  padding: clamp(1.6rem, 5vw, 2.4rem);
+}
+
+.auth__head {
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+
+.auth__mark {
+  width: 74px;
+  height: auto;
+  margin: 0 auto .8rem;
+  display: block;
+}
+
+.auth__head h1 {
+  font-family: var(--f-display);
+  font-size: var(--t-xl);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.auth__head p {
+  font-size: var(--t-sm);
+  color: var(--muted);
+  margin-top: .2rem;
+}
+
+.auth__form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth__form .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: .3rem;
+}
+
+/* The eye sits inside the input rather than beside it, so the field
+   keeps its full width on a phone. */
+.auth__pw {
+  position: relative;
+}
+
+.auth__peek {
+  position: absolute;
+  right: .5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: var(--r-xs);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.auth__peek:hover {
+  color: var(--kumkum);
+}
+
+.auth__peek[aria-pressed="true"] {
+  color: var(--kumkum);
+}
+
+.auth__pw input {
+  padding-right: 3rem;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: var(--kumkum);
+}
+
+.auth__foot {
+  margin-top: 1.4rem;
+  text-align: center;
+  font-size: var(--t-xs);
+}
+
+.auth__foot a {
+  color: var(--muted);
+}
+
+.auth__foot a:hover {
+  color: var(--kumkum);
+}
+
+/* ---------- Top bar --------------------------------------------------- */
+
+.ad-top {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .7rem clamp(.9rem, 3vw, 1.8rem);
+  background: var(--grad-deep);
+  color: var(--parchment);
+}
+
+.ad-top__brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  min-width: 0;
+}
+
+.ad-top__brand img {
+  width: 44px;
+  height: auto;
+  flex: none;
+}
+
+.ad-top__brand strong {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.ad-top__brand span {
+  display: block;
+  font-size: .68rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  opacity: .62;
+}
+
+.ad-top__right {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.ad-who {
+  font-size: var(--t-xs);
+  opacity: .78;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40vw;
+}
+
+/* ---------- Buttons --------------------------------------------------- */
+
+.ad-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: .52rem .9rem;
+  font-family: var(--f-body);
+  font-size: var(--t-xs);
+  font-weight: 620;
+  border-radius: var(--r-xs);
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+}
+
+.ad-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.ad-btn--primary {
+  background: var(--kumkum);
+  color: var(--parchment);
+}
+
+.ad-btn--primary:hover:not(:disabled) {
+  background: var(--kumkum-dp);
+}
+
+.ad-btn--ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+  opacity: .85;
+}
+
+.ad-btn--ghost:hover:not(:disabled) {
+  opacity: 1;
+  background: rgba(36, 24, 18, .06);
+}
+
+/* WhatsApp keeps its own green - operators look for it by colour. */
+.ad-btn--wa {
+  background: #1FA855;
+  color: #FFF;
+  text-decoration: none;
+}
+
+.ad-btn--wa:hover {
+  background: #17853F;
+  color: #FFF;
+}
+
+.ad-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border: 0;
+  border-radius: var(--r-xs);
+  background: transparent;
+  color: var(--ink-3);
+  cursor: pointer;
+}
+
+.ad-icon-btn:hover {
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+/* ---------- Layout ---------------------------------------------------- */
+
+.ad-main {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: clamp(1rem, 3vw, 1.8rem) clamp(.9rem, 3vw, 1.8rem) 4rem;
+}
+
+/* ---------- At a glance ----------------------------------------------- */
+
+.ad-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .7rem;
+  margin-bottom: 1.2rem;
+}
+
+.ad-stat {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-sm);
+  padding: .85rem 1rem;
+  box-shadow: var(--sh-xs);
+}
+
+.ad-stat dt {
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ad-stat dd {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-top: .15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ad-stat.is-loading dd {
+  color: var(--clay);
+}
+
+/* ---------- Filters --------------------------------------------------- */
+
+.ad-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  align-items: center;
+  margin-bottom: .8rem;
+}
+
+.ad-search {
+  position: relative;
+  flex: 1 1 260px;
+  display: flex;
+  align-items: center;
+}
+
+.ad-search svg {
+  position: absolute;
+  left: .75rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.ad-search input {
+  width: 100%;
+  padding: .6rem .8rem .6rem 2.3rem;
+  font-family: var(--f-body);
+  font-size: var(--t-sm);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs);
+  outline: none;
+}
+
+.ad-search input:focus {
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 3px rgba(220, 140, 51, .14);
+}
+
+.ad-select {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.ad-select select {
+  padding: .55rem 1.9rem .55rem .7rem;
+  font-family: var(--f-body);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--ink);
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B564A' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .6rem center;
+  cursor: pointer;
+}
+
+.ad-count {
+  font-size: var(--t-xs);
+  color: var(--muted);
+  margin-bottom: .7rem;
+  min-height: 1em;
+}
+
+/* ---------- Status pills ---------------------------------------------- */
+
+.pill {
+  display: inline-block;
+  padding: .22rem .58rem;
+  border-radius: var(--r-full);
+  font-size: .66rem;
+  font-weight: 680;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pill--paid       { background: rgba(79, 107, 75, .16);  color: #3B5A37; }
+.pill--created    { background: rgba(220, 140, 51, .18); color: #8A5518; }
+.pill--failed     { background: rgba(142, 47, 42, .13);  color: var(--kumkum); }
+.pill--cancelled  { background: rgba(36, 24, 18, .09);   color: var(--ink-3); }
+.pill--refunded   { background: rgba(198, 163, 83, .22); color: #7A6220; }
+
+.pill--f-pending    { background: rgba(36, 24, 18, .07);  color: var(--ink-3); }
+.pill--f-packed     { background: rgba(198, 163, 83, .24); color: #6F5719; }
+.pill--f-dispatched { background: rgba(43, 108, 176, .14); color: #245A94; }
+.pill--f-delivered  { background: rgba(79, 107, 75, .18);  color: #3B5A37; }
+
+/* ---------- Order cards ----------------------------------------------- */
+
+.ad-list {
+  display: grid;
+  gap: .6rem;
+}
+
+.ad-card {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-sm);
+  padding: .85rem 1rem;
+  box-shadow: var(--sh-xs);
+  cursor: pointer;
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease), transform .18s var(--ease);
+}
+
+.ad-card:hover {
+  border-color: var(--clay);
+  box-shadow: var(--sh-sm);
+  transform: translateY(-1px);
+}
+
+.ad-card:focus-visible {
+  outline: 2px solid var(--kumkum);
+  outline-offset: 2px;
+}
+
+.ad-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.ad-card__id strong {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: .03em;
+  color: var(--ink);
+}
+
+.ad-card__id span {
+  margin-left: .5rem;
+  font-size: var(--t-xs);
+  color: var(--muted);
+}
+
+.ad-card__pills {
+  display: flex;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+
+.ad-card__who {
+  margin-top: .45rem;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+
+.ad-card__name {
+  font-weight: 650;
+  color: var(--ink-2);
+}
+
+.ad-card__sep {
+  opacity: .4;
+}
+
+.ad-card__what {
+  margin-top: .35rem;
+  font-size: var(--t-xs);
+  color: var(--muted);
+}
+
+.ad-card__foot {
+  margin-top: .55rem;
+  padding-top: .5rem;
+  border-top: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.ad-card__amt {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--kumkum);
+  font-variant-numeric: tabular-nums;
+}
+
+.ad-card__coupon {
+  font-size: .68rem;
+  font-weight: 620;
+  padding: .16rem .5rem;
+  border-radius: var(--r-full);
+  background: rgba(79, 107, 75, .13);
+  color: #3B5A37;
+}
+
+.ad-card__grams {
+  margin-left: auto;
+  font-size: var(--t-xs);
+  color: var(--muted);
+}
+
+.ad-empty,
+.ad-error {
+  padding: 2.4rem 1rem;
+  text-align: center;
+  font-size: var(--t-sm);
+  color: var(--muted);
+}
+
+.ad-error {
+  color: var(--kumkum);
+}
+
+.ad-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+/* ---------- Detail drawer --------------------------------------------- */
+
+.ad-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.ad-drawer__scrim,
+.ad-modal__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(36, 24, 18, .5);
+  backdrop-filter: blur(2px);
+  animation: ad-fade .18s var(--ease);
+}
+
+.ad-drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(560px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--ivory);
+  box-shadow: var(--sh-lg);
+  animation: ad-slide .24s var(--ease);
+}
+
+@keyframes ad-fade {
+  from { opacity: 0; }
+}
+
+@keyframes ad-slide {
+  from { transform: translateX(18px); opacity: .4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-drawer__panel,
+  .ad-drawer__scrim,
+  .ad-modal__scrim,
+  .ad-modal__panel {
+    animation: none;
+  }
+}
+
+.ad-drawer__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .8rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.ad-drawer__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ad-drawer__head h2 {
+  font-family: var(--f-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .02em;
+}
+
+.ad-drawer__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.1rem 1.2rem 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ad-drawer__foot {
+  display: flex;
+  gap: .6rem;
+  padding: .8rem 1.2rem;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.ad-drawer__foot .ad-btn {
+  flex: 1;
+  padding-block: .7rem;
+}
+
+/* ---------- Detail sections ------------------------------------------- */
+
+.ad-sec {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-sm);
+  padding: .95rem 1.05rem;
+  margin-bottom: .8rem;
+}
+
+.ad-sec h3 {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .7rem;
+}
+
+.ad-kv {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: .3rem;
+  font-size: var(--t-sm);
+}
+
+.ad-kv dt {
+  color: var(--muted);
+  flex: none;
+}
+
+.ad-kv dd {
+  color: var(--ink-2);
+  text-align: right;
+  word-break: break-word;
+}
+
+.ad-kv dd.is-discount {
+  color: var(--tulsi);
+  font-weight: 620;
+}
+
+.ad-kv dd.is-total {
+  font-weight: 700;
+  color: var(--kumkum);
+  font-size: var(--t-base);
+}
+
+.ad-totals {
+  margin-top: .7rem;
+  padding-top: .6rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.ad-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: .5rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.ad-item:last-child {
+  border-bottom: 0;
+}
+
+.ad-item__name {
+  font-size: var(--t-sm);
+  font-weight: 620;
+  color: var(--ink);
+}
+
+.ad-item__meta {
+  font-size: var(--t-xs);
+  color: var(--muted);
+  margin-top: .1rem;
+}
+
+.ad-item__amt {
+  font-size: var(--t-sm);
+  font-weight: 620;
+  color: var(--ink-2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.ad-weight {
+  margin-top: .5rem;
+  font-size: var(--t-xs);
+  color: var(--muted);
+}
+
+.ad-address {
+  font-size: var(--t-sm);
+  line-height: 1.65;
+  color: var(--ink-2);
+  white-space: pre-line;
+  padding: .7rem .85rem;
+  background: var(--parchment);
+  border-radius: var(--r-xs);
+}
+
+.ad-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  margin-top: .7rem;
+}
+
+.ad-link {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--kumkum);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(142, 47, 42, .3);
+}
+
+.ad-link:hover {
+  border-bottom-color: currentColor;
+}
+
+.ad-note {
+  margin-top: .6rem;
+  font-size: var(--t-xs);
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+/* Something the person packing the box must not miss. */
+.ad-note--flag {
+  padding: .6rem .75rem;
+  background: rgba(220, 140, 51, .12);
+  border-left: 3px solid var(--saffron);
+  border-radius: 0 var(--r-xs) var(--r-xs) 0;
+  color: var(--ink-2);
+}
+
+.ad-label {
+  margin-top: .9rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Dispatch controls ----------------------------------------- */
+
+.ad-fstate {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.ad-fstate__when {
+  font-size: var(--t-xs);
+  color: var(--muted);
+}
+
+.ad-fform {
+  display: grid;
+  gap: .45rem;
+  margin-top: .8rem;
+}
+
+.ad-input {
+  width: 100%;
+  padding: .55rem .75rem;
+  font-family: var(--f-body);
+  font-size: var(--t-sm);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs);
+  outline: none;
+}
+
+.ad-input:focus {
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 3px rgba(220, 140, 51, .14);
+}
+
+.ad-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .7rem;
+}
+
+.ad-steps .ad-btn {
+  flex: 1 1 auto;
+  padding-block: .6rem;
+}
+
+.ad-log {
+  margin-top: .45rem;
+  /* style.css resets `ul, ol` to list-style:none for the marketing pages;
+     the dispatch history is one place a numbered list earns its markers. */
+  list-style: decimal;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: .3rem;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.ad-log li::marker {
+  color: var(--clay);
+}
+
+.ad-log strong {
+  color: var(--ink-2);
+}
+
+.ad-log em {
+  color: var(--muted);
+}
+
+/* ---------- WhatsApp composer ----------------------------------------- */
+
+.ad-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: clamp(.6rem, 3vw, 2rem);
+}
+
+.ad-modal__panel {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: min(86vh, 760px);
+  display: flex;
+  flex-direction: column;
+  background: var(--ivory);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-lg);
+  overflow: hidden;
+  animation: ad-fade .18s var(--ease);
+}
+
+.ad-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  padding: .9rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.ad-modal__head h2 {
+  font-family: var(--f-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.ad-modal__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+}
+
+.ad-modal__foot {
+  display: flex;
+  gap: .6rem;
+  padding: .8rem 1.1rem;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.ad-modal__foot .ad-btn {
+  flex: 1;
+  padding-block: .7rem;
+}
+
+.wa-to {
+  font-size: var(--t-sm);
+  font-weight: 620;
+  color: var(--ink-2);
+  padding: .55rem .75rem;
+  background: var(--parchment);
+  border-radius: var(--r-xs);
+}
+
+.wa-label {
+  display: block;
+  margin: .9rem 0 .45rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.wa-templates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.wa-chip {
+  padding: .4rem .7rem;
+  font-family: var(--f-body);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--ink-3);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  cursor: pointer;
+  transition: all .18s var(--ease);
+}
+
+.wa-chip:hover {
+  border-color: var(--clay);
+  color: var(--ink);
+}
+
+/* The one that matches where the order actually is. */
+.wa-chip--suggested {
+  border-color: var(--tulsi-lt);
+}
+
+.wa-chip[aria-pressed="true"] {
+  background: var(--kumkum);
+  border-color: var(--kumkum);
+  color: var(--parchment);
+}
+
+#waText {
+  width: 100%;
+  padding: .8rem .9rem;
+  font-family: var(--f-body);
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  resize: vertical;
+  outline: none;
+}
+
+#waText:focus {
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 3px rgba(220, 140, 51, .14);
+}
+
+.wa-hint {
+  margin-top: .5rem;
+  font-size: var(--t-xs);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------- Toast ------------------------------------------------------ */
+
+.ad-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.4rem;
+  transform: translateX(-50%);
+  z-index: 90;
+  max-width: min(440px, calc(100vw - 2rem));
+  padding: .75rem 1.1rem;
+  border-radius: var(--r-full);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--parchment);
+  background: var(--ink);
+  box-shadow: var(--sh-md);
+  animation: ad-toast-in .2s var(--ease);
+}
+
+.ad-toast--error {
+  background: var(--kumkum);
+}
+
+@keyframes ad-toast-in {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+}
+
+/* ---------- Phones ----------------------------------------------------- */
+
+@media (max-width: 560px) {
+  .ad-who {
+    display: none;
+  }
+
+  .ad-drawer__panel {
+    width: 100%;
+  }
+
+  .ad-select {
+    flex: 1 1 auto;
+  }
+
+  .ad-select select {
+    width: 100%;
+  }
+
+  .ad-card__grams {
+    margin-left: 0;
+  }
+}
+
+@media print {
+  .ad-top,
+  .ad-toolbar,
+  .ad-stats,
+  .ad-pager,
+  .ad-drawer__foot,
+  .ad-steps,
+  .ad-fform {
+    display: none !important;
+  }
+
+  .ad-drawer,
+  .ad-drawer__panel {
+    position: static;
+    box-shadow: none;
+  }
+
+  .ad-drawer__scrim {
+    display: none;
+  }
+}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product - MatriAmrit</title>
+  <meta name="description"
+    content="Traditional Ayurvedic laddus made in small batches. Choose your pack size and book an order with secure online payment.">
+  <meta name="theme-color" content="#241812">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..700&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/img/logo/logoMatri.png">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="index.html" aria-label="MatriAmrit - home">
+        <img class="brand__mark" src="assets/img/logo/logoMatri.png" alt="" style="width:65px;height:47px" width="416"
+          height="321" fetchpriority="high" decoding="async">
+        <span class="brand__text"><span class="brand__name">MatriAmrit</span><span class="brand__tag">Preserving
+            Tradition</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a class="nav__link" href="index.html#philosophy">Our Story</a>
+        <a class="nav__link" href="index.html#team">Our Team</a>
+        <a class="nav__link" href="products.html">Products</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="btn btn--primary btn--sm" href="products.html">
+          Order now
+          <svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <button class="nav__burger" id="burger" aria-expanded="false" aria-controls="drawer"
+          aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="nav__progress" id="progress"></div>
+  </header>
+
+  <div class="drawer" id="drawer">
+    <a class="drawer__link" href="index.html">Home <span>01</span></a>
+    <a class="drawer__link" href="index.html#team">Our Team <span>02</span></a>
+    <a class="drawer__link" href="products.html">Products <span>03</span></a>
+    <a class="drawer__link" href="contact.html">Contact <span>04</span></a>
+    <div class="drawer__foot">
+      <p class="deva">॥ मातृदेवो भव ॥</p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- Everything below is rendered by js/product.js from the static
+         catalogue in js/catalogue.js. The noscript block and the error
+         panel are the only markup that ships pre-rendered. -->
+
+    <noscript>
+      <section class="section">
+        <div class="wrap wrap--narrow">
+          <h1 class="h1">JavaScript is needed to book an order</h1>
+          <p class="lede">You can still reach us on
+            <a href="https://wa.me/917838441441">WhatsApp (+91 78384 41441)</a> and we will take your order there.
+          </p>
+        </div>
+      </section>
+    </noscript>
+
+    <div id="pdpRoot" hidden>
+
+      <section class="page-head">
+        <div class="wrap page-head__inner">
+          <nav class="crumbs" aria-label="Breadcrumb">
+            <a href="index.html">Home</a> <span aria-hidden="true">/</span>
+            <a href="products.html">Products</a> <span aria-hidden="true">/</span>
+            <span data-pdp="crumb"></span>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="wrap">
+          <div class="pdp">
+
+            <!-- ── Media ─────────────────────────────────────────── -->
+            <div class="pdp__media" data-pdp="media">
+              <span class="pdp__badge" data-pdp="badge"></span>
+              <img data-pdp="image" src="" alt="" width="720" height="540" decoding="async">
+            </div>
+
+            <!-- ── Buy panel ─────────────────────────────────────── -->
+            <div>
+              <span class="eyebrow" data-pdp="tagline"></span>
+              <h1 class="h1" data-pdp="name"></h1>
+              <p class="pdp__deva" data-pdp="devanagari"></p>
+              <p class="pdp__subtitle" data-pdp="subtitle"></p>
+              <p class="pdp__summary" data-pdp="summary"></p>
+              <p class="pdp__rate" data-pdp="rate"></p>
+
+              <form id="buyForm" novalidate>
+                <div class="picker">
+                  <span class="picker__label" id="sizeLabel">Choose your box size</span>
+                  <div class="picker__opts" role="radiogroup" aria-labelledby="sizeLabel" data-pdp="variants"></div>
+                </div>
+
+                <div class="picker">
+                  <label class="picker__label" for="qtyInput">How many boxes?</label>
+                  <div class="qty">
+                    <button type="button" data-qty="down" aria-label="Decrease quantity">−</button>
+                    <input id="qtyInput" type="number" value="1" min="1" max="20" step="1"
+                      inputmode="numeric" aria-label="Quantity">
+                    <button type="button" data-qty="up" aria-label="Increase quantity">+</button>
+                  </div>
+                </div>
+
+                <div class="pdp__buy">
+                  <div class="pdp__linetotal" data-pdp="lineTotal">
+                    <small>Total for this item</small>
+                  </div>
+                  <button class="btn btn--primary" type="submit">
+                    Book this order
+                    <svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+
+              <div class="pdp__trust">
+                <span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>Secure payment via Razorpay
+                </span>
+                <span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13 5.4 5M7 13l-2 4h12" />
+                    <circle cx="9" cy="20" r="1" />
+                    <circle cx="18" cy="20" r="1" />
+                  </svg>Delivery included in the price
+                </span>
+                <span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>Freshly made after you order
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Detail panels ───────────────────────────────────────── -->
+      <section class="section philosophy">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">In Full</span>
+            <h2 class="h1" data-pdp="storyTitle">What is actually in it</h2>
+            <p class="lede" data-pdp="story"></p>
+          </div>
+
+          <div class="ing" data-reveal>
+            <h3 class="ing__head">
+              <span aria-hidden="true">✨</span>
+              <span data-pdp="ingredientsHeading"></span>
+            </h3>
+            <ul class="ing__list" data-pdp="ingredients"></ul>
+            <p class="pdp-allergen" data-pdp="allergens"></p>
+          </div>
+
+          <div class="pdp-detail" style="margin-top:clamp(1.2rem,3vw,2rem)">
+            <div class="pdp-card" data-reveal>
+              <h3>How to take it</h3>
+              <ol data-pdp="howToUse"></ol>
+            </div>
+
+            <div class="pdp-card" data-reveal style="--d:80ms">
+              <h3>Storage &amp; shelf life</h3>
+              <p data-pdp="storage"></p>
+              <p class="pdp-allergen">
+                Please read the pack before consuming, and speak to your doctor before
+                starting any new food during pregnancy, after delivery, or for a child.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Parampara ───────────────────────────────────────────── -->
+      <section class="section section--tight">
+        <div class="wrap wrap--narrow">
+          <div class="parampara" data-reveal>
+            <span class="parampara__lotus" aria-hidden="true">🪷</span>
+            <h2 class="parampara__title" data-pdp="paramparaTitle"></h2>
+            <p class="parampara__body" data-pdp="paramparaBody"></p>
+            <p class="parampara__mantra deva" data-pdp="paramparaMantra"></p>
+            <p class="parampara__closing" data-pdp="paramparaClosing"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FAQ ─────────────────────────────────────────────────── -->
+      <section class="section">
+        <div class="wrap wrap--narrow">
+          <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow eyebrow--center">Questions</span>
+            <h2 class="h1">Before you order</h2>
+          </div>
+          <div class="faq" data-pdp="faqs"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Shown when ?id= names a product we do not have. -->
+    <section class="section" id="pdpMissing" hidden>
+      <div class="wrap wrap--narrow" style="text-align:center">
+        <span class="eyebrow eyebrow--center">Not found</span>
+        <h1 class="h1">We could not find that product</h1>
+        <p class="lede">It may have been renamed. Our full range is short - have a look.</p>
+        <p style="margin-top:1.6rem"><a class="btn btn--primary" href="products.html">See both products</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="index.html">
+            <img class="brand__mark" src="assets/img/logo/logoMatri.png" alt="" width="416" height="321" loading="lazy"
+              decoding="async">
+            <span class="brand__text"><span class="brand__name">MatriAmrit</span><span class="brand__tag">Preserving
+                Tradition</span></span>
+          </a>
+          <p class="footer__about">Nourishing Families, Preserving tradition</p>
+          <div class="socials">
+            <a href="https://wa.me/917838441441" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5A8.4 8.4 0 0 1 12.6 20a8.3 8.3 0 0 1-4-1L3 20.5l1.5-5.4A8.4 8.4 0 1 1 21 11.5Z" />
+              </svg></a>
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg></a>
+            <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 12s0-4-.5-5.5C21 5 19.8 4.6 12 4.6S3 5 2.5 6.5C2 8 2 12 2 12s0 4 .5 5.5C3 19 4.2 19.4 12 19.4s9-.4 9.5-1.9C22 16 22 12 22 12Z" />
+                <path d="m10 9 5 3-5 3z" />
+              </svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul class="footer__list">
+            <li><a href="index.html#philosophy">Our Story</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="samskaras.html">The 16 Samskaras</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Get in touch</h4>
+          <ul class="footer__list">
+            <li><a href="https://wa.me/917838441441" target="_blank" rel="noopener">WhatsApp · 7838441441</a></li>
+            <li class="footer__addr">303, Studio Apartment,<br>Dwarka, New Delhi 110078</li>
+            <li><a href="products.html">Place an order
+                →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span id="yr">2026</span> MatriAmrit. Made with reverence in India.</span>
+        <nav aria-label="Legal"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a
+            href="terms.html#shipping">Shipping</a><a href="terms.html#refunds">Refunds</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script src="js/config.js"></script>
+  <script src="js/catalogue.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/product.js"></script>
+</body>
+
+</html>

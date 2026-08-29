@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in - MatriAmrit Dispatch</title>
+  <meta name="theme-color" content="#241812">
+  <!-- Never indexed, never followed. This page is for staff only. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/png" href="assets/img/logo/logoMatri.png">
+</head>
+
+<body class="admin-body admin-body--auth">
+
+  <main class="auth" id="main">
+    <div class="auth__card">
+      <div class="auth__head">
+        <img class="auth__mark" src="assets/img/logo/logoMatri.png" alt="MatriAmrit" width="416" height="321">
+        <h1>Dispatch panel</h1>
+        <p>Sign in to view and dispatch orders.</p>
+      </div>
+
+      <form class="auth__form" id="loginForm" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" autocapitalize="none"
+            autocorrect="off" spellcheck="false" required aria-describedby="usernameErr">
+          <p class="field__err" id="usernameErr" data-err="username"></p>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="auth__pw">
+            <input type="password" id="password" name="password" autocomplete="current-password" required
+              aria-describedby="passwordErr">
+            <button class="auth__peek" type="button" id="peekBtn" aria-label="Show password" aria-pressed="false">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+          <p class="field__err" id="passwordErr" data-err="password"></p>
+        </div>
+
+        <div class="form-status" id="loginStatus" role="alert" aria-live="assertive"></div>
+
+        <button class="btn btn--primary" type="submit" id="loginBtn">
+          Sign in
+          <svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </button>
+      </form>
+
+      <p class="auth__foot">
+        <a href="index.html">← Back to the website</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin-api.js"></script>
+  <script src="js/admin-login.js" defer></script>
+</body>
+
+</html>
