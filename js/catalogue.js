@@ -83,8 +83,8 @@
         'Contains wheat, milk (cow ghee), tree nuts (almond, cashew, walnut, chironji), sesame, poppy, sunflower, melon and magaz seeds, and coconut. Made in a kitchen that also handles groundnut.',
 
       variants: [
-        { id: 'oorja-1kg', label: '1 kg', grams: 1000, price: 1450, note: 'About 24 laddus · roughly a month', popular: true },
-        { id: 'oorja-2kg', label: '2 kg', grams: 2000, price: 2900, note: 'About 48 laddus · for a whole household' },
+        { id: 'oorja-1kg', label: '1 kg', grams: 1000, price: 1450, note: '', popular: true },
+        { id: 'oorja-2kg', label: '2 kg', grams: 2000, price: 2900, note: '' },
       ],
 
       faqs: [
